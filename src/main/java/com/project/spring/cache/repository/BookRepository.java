@@ -6,4 +6,6 @@ public interface BookRepository {
 
     Book getByIsbn(String isbn);
 
+    Book getByIsbnToEvict(String isbn);
+
 }

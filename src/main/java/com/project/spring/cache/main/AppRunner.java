@@ -19,13 +19,22 @@ public class AppRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info(".... Fetching books");
+        logger.info(".... Cacheable books");
         logger.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
         logger.info("isbn-4567 -->" + bookRepository.getByIsbn("isbn-4567"));
         logger.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
         logger.info("isbn-4567 -->" + bookRepository.getByIsbn("isbn-4567"));
         logger.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
         logger.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
+
+
+        logger.info(".... CacheEvict books");
+        logger.info("isbn-1234Evict -->" + bookRepository.getByIsbnToEvict("isbn-1234Evict"));
+        logger.info("isbn-4567Evict -->" + bookRepository.getByIsbnToEvict("isbn-4567Evict"));
+        logger.info("isbn-1234Evict -->" + bookRepository.getByIsbnToEvict("isbn-1234Evict"));
+        logger.info("isbn-4567Evict -->" + bookRepository.getByIsbnToEvict("isbn-4567Evict"));
+        logger.info("isbn-1234Evict -->" + bookRepository.getByIsbnToEvict("isbn-1234Evict"));
+        logger.info("isbn-1234Evict -->" + bookRepository.getByIsbnToEvict("isbn-1234Evict"));
     }
 
 }

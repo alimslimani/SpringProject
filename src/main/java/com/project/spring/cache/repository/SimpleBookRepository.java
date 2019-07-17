@@ -1,6 +1,7 @@
 package com.project.spring.cache.repository;
 
 import com.project.spring.cache.model.Book;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,14 @@ public class SimpleBookRepository implements BookRepository {
     @Cacheable("books")
     public Book getByIsbn(String isbn) {
         simulateSlowService();
-        return new Book(isbn, "Some book");
+        return new Book(isbn, "Cache book");
+    }
+
+    @Override
+    @CacheEvict(value = "booksEvict")
+    public Book getByIsbnToEvict(String isbn) {
+        simulateSlowService();
+        return new Book(isbn, "Evict book");
     }
 
     // Don't do this at home
